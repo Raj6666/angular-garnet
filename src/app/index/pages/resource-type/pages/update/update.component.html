@@ -1,0 +1,99 @@
+<div class="update-wrap inner-container">
+  <nz-card nzType="inner" nzTitle="新增/修改">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="3" nzRequired>
+            名称
+        </nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入名称">
+          <input nz-input formControlName="name"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="3" nzRequired>代号</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入代号">
+          <input nz-input formControlName="codeName"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="3" nzRequired>资源类型描述</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入资源类型描述">
+          <input nz-input formControlName="typeDescription"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="3" nzRequired>类型</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择类型">
+          <nz-radio-group formControlName="resourceType" required>
+            <label nz-radio nzValue="T">租户</label>
+            <label nz-radio nzValue="A">应用</label>
+            <label nz-radio nzValue="T+A">租户+应用</label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item *ngIf="this.validateForm.controls.resourceType.value != 'A'">
+        <nz-form-label [nzSpan]="3" nzRequired>关联租户</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择关联租户">
+          <nz-select formControlName="relatedTenantSelectedValue">
+            <nz-option
+              *ngFor="let option of relatedTenantOption"
+              [nzLabel]="option"
+              [nzValue]="option"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item *ngIf="this.validateForm.controls.resourceType.value != 'T'">
+        <nz-form-label [nzSpan]="3" nzRequired>关联应用</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择关联应用">
+          <nz-select formControlName="relatedAppSelectedValue">
+            <nz-option
+              *ngFor="let option of relatedAppOption"
+              [nzLabel]="option"
+              [nzValue]="option"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="3" nzRequired>行为组</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入行为组">
+          <input nz-input formControlName="actionGroup"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="control-width" *ngFor="let control of listOfControl; let i = index">
+        <nz-form-label [nzSpan]="3">{{control.controlInstance.split('-')[1]}}</nz-form-label>
+        <nz-form-control [nzSpan]="8">
+          <input
+            class="passenger-input"
+            nz-input
+            [attr.id]="control.id"
+            [attr.type]="control.controlInstance.split('-')[1]"
+            [formControlName]="control.controlInstance"
+          />
+          <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField(control, $event)"></i>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item class="update-form-item">
+        <nz-form-control [nzSpan]="8" [nzOffset]="3">
+          <nz-radio-group formControlName="fieldType">
+            <label nz-radio nzValue="字符型">字符型</label>
+            <label nz-radio nzValue="整型">整型</label>
+            <label nz-radio nzValue="布尔型">布尔型</label>
+          </nz-radio-group>
+          <button nz-button [disabled]="!(this.validateForm.controls.fieldType.value)" nzType="dashed" class="add-button" (click)="addField(null, $event)">
+            <i nz-icon nzType="plus"></i>
+            添加行
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-control [nzSpan]="12" [nzOffset]="5">
+          <button nz-button nzType="primary" class="confirm-btn">确认</button>
+          <button nz-button routerLink="/index/resource-type" [queryParamsHandling]="'merge'">返回</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-card>
+</div>

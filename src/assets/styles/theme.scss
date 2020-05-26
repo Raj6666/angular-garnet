@@ -1,0 +1,43 @@
+$headbarLeftColor: var(--headbarLeftColor); // 头部栏渐变色左侧颜色
+$headbarRightColor: var(--headbarRightColor); // 头部栏渐变色右侧颜色
+$headbarTriggerColor: var(--headbarTriggerColor); // 头部栏按钮悬浮渐变色
+$sidebarBgColor: var(--sidebarBgColor); // 侧边栏背景色
+$sidebarLogoColor: var(--sidebarLogoColor); // 侧边栏logo背景色
+$breadcrumbItemColor: var(--breadcrumbItemColor); // 面包屑导航标签颜色
+$contentBgColor: var(--contentBgColor); // 内容背景颜色
+
+// 头部栏
+::ng-deep .header-wrapper {
+  background-image: linear-gradient(45deg, $headbarLeftColor, $headbarRightColor);
+
+  .button:hover {
+    background-color: $headbarTriggerColor;
+  }
+}
+
+::ng-deep .header-trigger:hover {
+  background-color: $headbarTriggerColor;
+}
+
+// 侧边栏
+::ng-deep .sider-container {
+  background-color: $sidebarBgColor;
+
+  .sider-logo {
+    background-color: $sidebarLogoColor;
+  }
+}
+
+// 面包屑导航
+::ng-deep .ant-breadcrumb a {
+  color: $breadcrumbItemColor;
+}
+
+::ng-deep .wrapper .ant-breadcrumb-separator {
+  color: $breadcrumbItemColor;
+}
+
+// 主内容
+::ng-deep .content-container {
+  background: $contentBgColor;
+}

@@ -1,0 +1,34 @@
+<!--
+ * @Descripttion: 侧边栏
+ * @version:
+ * @Author: Husiyuan
+ * @Date: 2020-04-24 10:53:00
+ * @LastEditors: Husiyuan
+ * @LastEditTime: 2020-05-22 16:55:12
+ -->
+ <nz-sider nzCollapsible [nzCollapsed]="isCollapsed" [nzTrigger]="null" class="sider-container" id="siderContainer" [nzWidth]="230">
+  <div class="sider-logo">
+    <span *ngIf="!isCollapsed">Garnet安全模块</span>
+    <span *ngIf="isCollapsed">GRN</span>
+  </div>
+  <ul nz-menu [nzTheme]="theme" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+    <li nz-submenu nzTitle="系统管理" nzIcon="setting" [nzOpen]="currentMenu == 1" (nzOpenChange)="currentMenu = 1">
+      <ul>
+        <li nz-menu-item routerLink="/index/tenant" [queryParamsHandling]="'merge'" [nzSelected]="currentLabels.includes('租户管理')"><i nz-icon nzType="contacts" nzTheme="outline"></i>租户管理</li>
+        <li nz-menu-item routerLink="/index/application" [queryParamsHandling]="'merge'" [nzSelected]="currentLabels.includes('应用管理')"><i nz-icon nzType="appstore" nzTheme="outline"></i>应用管理</li>
+        <li nz-menu-item routerLink="/index/users"  [queryParamsHandling]="'merge'"  [nzSelected]="currentLabels.includes('用户管理')"><i nz-icon nzType="user" nzTheme="outline"></i>用户管理</li>
+        <li nz-menu-item routerLink="/index/group" [queryParamsHandling]="'merge'"  [nzSelected]="currentLabels.includes('组管理')"><i nz-icon nzType="team" nzTheme="outline"></i>组管理</li>
+        <li nz-menu-item routerLink="/index/role" [queryParamsHandling]="'merge'"  [nzSelected]="currentLabels.includes('角色管理')"><i nz-icon nzType="idcard" nzTheme="outline"></i>角色管理</li>
+        <li nz-menu-item routerLink="/index/log" [queryParamsHandling]="'merge'" [nzSelected]="currentLabels.includes('系统日志')"><i nz-icon nzType="file-text" nzTheme="outline"></i>系统日志</li>
+      </ul>
+    </li>
+    <li nz-submenu nzTitle="开发选项" nzIcon="code" [nzOpen]="currentMenu == 2" (nzOpenChange)="currentMenu = 2">
+      <ul>
+        <li nz-menu-item routerLink="/index/permission" [queryParamsHandling]="'merge'" [nzSelected]="currentLabels.includes('权限管理')"><i nz-icon nzType="key" nzTheme="outline"></i>权限管理</li>
+        <li nz-menu-item routerLink="/index/resources" [queryParamsHandling]="'merge'" [nzSelected]="currentLabels.includes('资源管理')"><i nz-icon nzType="cluster" nzTheme="outline"></i>资源管理</li>
+        <li nz-menu-item routerLink="/index/resource-type" [queryParamsHandling]="'merge'" [nzSelected]="currentLabels.includes('资源类型配置')"><i nz-icon nzType="apartment" nzTheme="outline"></i>资源类型配置</li>
+        <li nz-menu-item routerLink="/index/sso" [queryParamsHandling]="'merge'" [nzSelected]="currentLabels.includes('单点登录应用组')"><i nz-icon nzType="fork" nzTheme="outline"></i>单点登录应用组</li>
+      </ul>
+    </li>
+  </ul>
+</nz-sider>

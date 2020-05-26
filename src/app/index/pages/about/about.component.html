@@ -1,0 +1,46 @@
+<!--
+  关于Garnet
+ -->
+<div class="wrapper inner-container">
+
+  <h3><i class="triangle"></i><span></span>项目简介</h3>
+  <ul class="project-introduction">
+    <li>本系统名称为 Garnet 安全模块系统，需要提供安全可靠的登录和资源权限控制功能，并且可以快速集成其他系统，达到系统复用和高效开发的目的</li>
+    <li>该系统只有管理员才能对系统进行管理，普通用户只能修改本账户的密码，修改密码之后需重新登录</li>
+    <li>该系统同一账号只能单一登录。例如，当“甲用户”使用“A账号”登录系统，如果“乙用户”随后也使用“A账号”登录该系统，那么“甲用户”将被“踢下线”（即会话失效），需重新登录系统</li>
+    <li>用户登录本系统后，如果 30 分钟无任何操作，系统将清除该用户的会话，用户需重新登录方能继续使用系统</li>
+    <li>用户列表只显示已被租户关联的用户</li>
+    <li>Garnet 超级管理员（即在创建用户时勾选“平台管理员”组)可看到所有信息，包括上述未被租户关联的用户</li>
+    <li>租户已经关联的用户，可通过“租户编辑”-“查看已关联用户”，进行解绑</li>
+  </ul>
+
+
+  <h3><i class="triangle"></i><span></span>功能介绍</h3>
+  <div class="function-introduction">
+    <div class="function-box">
+      <img src="../../../../assets/images/about/img_basics.png"/>
+      <ul class="function">
+        <li>基础功能</li>
+        <li><i nz-icon nzType="tag" nzTheme="fill" nzRotate="270"></i> 查询：支持通过名称进行模糊查询</li>
+        <li><i nz-icon nzType="tag" nzTheme="fill" nzRotate="270"></i>新增：标有 * 的为必填项；各类名称或账号不能重复；各项数值需合规范</li>
+        <li><i nz-icon nzType="tag" nzTheme="fill" nzRotate="270"></i>编辑：同上；各项数值需合规范</li>
+        <li><i nz-icon nzType="tag" nzTheme="fill" nzRotate="270"></i>删除：支持多选批量删除</li>
+      </ul>
+    </div>
+    <div class="function-box">
+      <img src="../../../../assets/images/about/img_especially.png"/>
+      <ul class="function">
+        <li>特别功能</li>
+        <li><i nz-icon nzType="tag" nzTheme="fill" nzRotate="270"></i>资源导入：资源管理中，支持通过使用Excel批量导入数据；用户需下载Excel模板，使用下载的Excel填写数据后，点击导入Excel按钮，选择填好数据的Excel
+        </li>
+        <li><i nz-icon nzType="tag" nzTheme="fill" nzRotate="270"></i>资源查看：资源管理中，通过下拉框选择应用、类型后，点击 查看按钮可以快速查看选择的应用及资源类型下的所有资源配置
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h3><i class="triangle"></i><span></span>注意事项</h3>
+  <ul class="project-introduction">
+    <li>修改资源类型配置后，需重新编辑关联的资源</li>
+  </ul>
+
+</div>

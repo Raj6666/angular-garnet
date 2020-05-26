@@ -1,0 +1,8 @@
+{
+  "/garnet": {
+    "target": "http://192.168.108.24:30092/",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

@@ -1,0 +1,47 @@
+<div class="inner-container">
+  <app-tool></app-tool>
+  <div class="table-wrap">
+    <nz-table
+      #rowSelectionTable
+      nzShowPagination
+      nzShowSizeChanger
+      [nzData]="myTableServie.listOfAllData"
+      (nzCurrentPageDataChange)="myTableServie.currentPageDataChange($event)"
+    >
+      <thead>
+      <tr>
+        <th
+          nzShowCheckbox
+          nzWidth="80px"
+          nzAlign="center"
+          [(nzChecked)]="myTableServie.isAllDisplayDataChecked"
+          [nzIndeterminate]="myTableServie.isIndeterminate"
+          (nzCheckedChange)="myTableServie.checkAll($event)"
+        ></th>
+        <th nzAlign="center">用户名</th>
+        <th nzAlign="center">操作</th>
+        <th nzAlign="center">操作内容</th>
+        <th nzAlign="center">IP地址</th>
+        <th nzAlign="center">记录时间</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of rowSelectionTable.data">
+        <td
+          nzShowCheckbox
+          nzAlign="center"
+          [(nzChecked)]="myTableServie.mapOfCheckedId[data.id]"
+          [nzDisabled]="data.disabled"
+          (nzCheckedChange)="myTableServie.refreshStatus()"
+        ></td>
+        <td nzAlign="center">{{ data.name }}</td>
+        <td nzAlign="center">{{ data.operation }}</td>
+        <td nzAlign="center">{{ data.operationContent }}</td>
+        <td nzAlign="center">{{ data.IP }}</td>
+        <td nzAlign="center">{{ data.writeTime }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+

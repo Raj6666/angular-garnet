@@ -1,0 +1,25 @@
+/*下拉多选框的样式*/
+ .multiple-select .ant-select-selection {
+  max-height: 87px;
+  overflow: auto;
+}
+
+ .multiple-select .ant-select-arrow-icon {
+  margin-right: 5px;
+}
+
+/*修改滚动条样式*/
+ .multiple-select .ant-select-selection::-webkit-scrollbar {
+  width: 8px;
+}
+
+ .multiple-select .ant-select-selection::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #c1c1c1;
+  margin-right: 2px;
+}
+
+.multiple-select .ant-select-selection::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: #fff;
+}

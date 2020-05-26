@@ -1,0 +1,62 @@
+<div class="inner-container">
+  <app-tool-application></app-tool-application>
+  <div class="table-wrap">
+    <nz-table
+      #rowSelectionTable
+      nzShowPagination
+      nzShowSizeChanger
+      [nzData]="myTableServie.listOfAllData"
+      (nzCurrentPageDataChange)="myTableServie.currentPageDataChange($event)"
+    >
+      <thead>
+      <tr>
+        <th
+          nzShowCheckbox
+          nzWidth="90"
+          nzAlign="center"
+          [(nzChecked)]="myTableServie.isAllDisplayDataChecked"
+          [nzIndeterminate]="myTableServie.isIndeterminate"
+          (nzCheckedChange)="myTableServie.checkAll($event)"
+        ></th>
+        <th nzAlign="center">名称</th>
+        <th nzAlign="center">代号</th>
+        <th nzAlign="center">资源类型描述</th>
+        <th nzAlign="center">类型</th>
+        <th nzAlign="center">关联租户</th>
+        <th nzAlign="center">关联应用</th>
+        <th nzAlign="center">行为组</th>
+        <th nzWidth="150" nzAlign="center">操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of rowSelectionTable.data">
+        <td
+          nzShowCheckbox
+          nzAlign="center"
+          [(nzChecked)]="myTableServie.mapOfCheckedId[data.id]"
+          [nzDisabled]="data.disabled"
+          (nzCheckedChange)="myTableServie.refreshStatus()"
+        ></td>
+        <td nzAlign="center">{{ data.name }}</td>
+        <td nzAlign="center">{{ data.codeName }}</td>
+        <td nzAlign="center">{{ data.typeDescription }}</td>
+        <td nzAlign="center">{{ data.resourceType }}</td>
+        <td nzAlign="center">{{ data.relatedTenant }}</td>
+        <td nzAlign="center">{{ data.relatedApp}}</td>
+        <td nzAlign="center">{{ data.actionGroup }}</td>
+        <td nzAlign="center">
+          <div class="operation-button">
+            <i nz-icon nzType="eye" (click)="showModal(data)" title="查看" [nzTheme]="'twotone'"></i>
+            <i nz-icon nzType="edit" [nzTheme]="'twotone'" (click)="updateData(data)" title="修改" routerLink="/index/resource-type/update" [queryParamsHandling]="'merge'"></i>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+<app-modal
+  [isVisible]="isModalVisible"
+  [rowData]="rowData"
+  (closeEvent)="isModalVisible = false"
+></app-modal>

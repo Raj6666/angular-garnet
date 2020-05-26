@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+
+html {
+  font-size: 62.5% !important;
+}
+
+body {
+  font-size: 12px;
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+
+@media screen and (max-width: 1366px) {
+  html {
+    font-size: 44.5% !important;
+  }
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.detailItem {
+  padding: 5px 0;
+}
+.detailItem div:first-child{
+  text-align: right;
+  padding-right: 10px;
+}
+
+.table-wrap tr td {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+nz-select .ant-select-selection__rendered{
+  margin-right: 25px;
+}
+
+.ant-menu-item, .table-wrap .operation-button i{
+  outline: none;
+}
+
+.inner-container{
+  padding: 20px;
+}
+
+.header-export .ant-btn, .header-operation-button .ant-btn{
+  transition: none;
+}
+

@@ -1,0 +1,61 @@
+<div class="update-wrap inner-container">
+  <nz-card nzType="inner" nzTitle="新增/修改">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>应用名称</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入应用名称">
+          <input nz-input formControlName="appName" required placeholder="长度不大于30" maxlength="30"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>应用标识</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入正确的应用标识">
+          <input nz-input pattern="[a-zA-Z-_]*" formControlName="appIdentifier" required placeholder="只能填写英文、下划线、连字符且长度不大于30" maxlength="30"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>应用首页URL</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入应用首页URL">
+          <input nz-input formControlName="appIndexURL" required placeholder="填写应用默认首页链接"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3">关联租户</nz-form-label>
+        <nz-form-control [nzSpan]="8">
+          <nz-select class="multiple-select" nzMode="multiple" formControlName="relatedTenantSelectedValue">
+            <nz-option
+              *ngFor="let option of relatedTenantOption"
+              [nzLabel]="option"
+              [nzValue]="option"
+              [nzHide]="hideOption('relatedTenantSelectedValue', option)"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>所属公司</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入所属公司">
+          <input nz-input formControlName="company" required placeholder="长度不大于30" maxlength="30"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3">刷新资源Api</nz-form-label>
+        <nz-form-control [nzSpan]="8">
+          <input nz-input formControlName="refreshApi" placeholder="刷新资源Api" maxlength="30"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3">主机</nz-form-label>
+        <nz-form-control [nzSpan]="8">
+          <input nz-input formControlName="host" placeholder="主机" maxlength="30"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-control [nzSpan]="12" [nzOffset]="5">
+          <button type="submit" nz-button nzType="primary" class="confirm-btn">确认</button>
+          <button nz-button routerLink="/index/application" [queryParamsHandling]="'merge'">返回</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-card>
+</div>

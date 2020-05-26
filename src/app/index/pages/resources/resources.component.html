@@ -1,0 +1,72 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: Husiyuan
+ * @Date: 2020-05-15 19:04:13
+ * @LastEditors: Husiyuan
+ * @LastEditTime: 2020-05-15 19:04:13
+-->
+<div class="resource-container">
+  <div #resourceTree class="resource-tree">
+    <div class="tree-title">
+      <i nz-icon nzType="cluster" nzTheme="outline"></i>&nbsp;&nbsp;资源通配符
+    </div>
+    <div>
+      <nz-tree [nzData]="nodes" nzShowLine (nzClick)="nzEvent($event)"></nz-tree>
+    </div>
+  </div>
+  <div class="resource-content">
+    <app-tool></app-tool>
+    <div class="table-wrap">
+      <nz-table
+        #rowSelectionTable
+        nzShowPagination
+        nzShowSizeChanger
+        [nzData]="myTableServie.listOfAllData"
+        (nzCurrentPageDataChange)="myTableServie.currentPageDataChange($event)"
+      >
+        <thead>
+        <tr>
+          <th
+            nzShowCheckbox
+            nzWidth="80px"
+            nzAlign="center"
+            [(nzChecked)]="myTableServie.isAllDisplayDataChecked"
+            [nzIndeterminate]="myTableServie.isIndeterminate"
+            (nzCheckedChange)="myTableServie.checkAll($event)"
+          ></th>
+          <th nzAlign="center">资源名称</th>
+          <th nzAlign="center">资源描述</th>
+          <th nzAlign="center">路径标识</th>
+          <th nzAlign="center">资源配置类型</th>
+          <th nzWidth="150px" nzAlign="center">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td
+            nzShowCheckbox
+            nzAlign="center"
+            [(nzChecked)]="myTableServie.mapOfCheckedId[data.id]"
+            [nzDisabled]="data.disabled"
+            (nzCheckedChange)="myTableServie.refreshStatus()"
+          ></td>
+          <td nzAlign="center">{{ data.name }}</td>
+          <td nzAlign="center">{{ data.resourceDescription }}</td>
+          <td nzAlign="center">{{ data.pathIdentification }}</td>
+          <td nzAlign="center">{{ data.typeSetting }}</td>
+          <td nzAlign="center">
+            <div class="operation-button">
+              <i nz-icon nzType="eye" (click)="showModal(data)" title="查看" [nzTheme]="'twotone'"></i>
+              <i nz-icon nzType="edit" [nzTheme]="'twotone'" (click)="updateData(data)" title="修改" routerLink="/index/resources/update" [queryParamsHandling]="'merge'"></i>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>
+
+<app-modal [isVisible]="isModalVisible" [rowData]="rowData" (closeEvent)="isModalVisible = false"></app-modal>
+

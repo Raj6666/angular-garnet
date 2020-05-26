@@ -1,0 +1,29 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: Husiyuan
+ * @Date: 2020-04-24 11:06:55
+ * @LastEditors: Husiyuan
+ * @LastEditTime: 2020-05-07 15:18:54
+ -->
+<nz-header id="headerContainer" class="header-wrapper">
+  <i
+    class="header-trigger"
+    nz-icon
+    [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+    (click)="collapseClick()"
+  ></i>
+  <div class="item flex-1">欢迎 {{user}}</div>
+  <div class="item button" routerLink="/index/about">
+    <i nz-icon nzType="tag" nzTheme="fill" nzRotate="270"></i>
+    关于 Garnet
+  </div>
+  <div class="item button">
+    <i nz-icon nzType="lock" nzTheme="fill"></i>
+    修改密码
+  </div>
+  <div class="item button">
+    <i nz-icon nzType="logout" nzTheme="outline"></i>
+    退出系统
+  </div>
+</nz-header>

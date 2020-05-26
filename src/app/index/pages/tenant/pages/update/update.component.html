@@ -1,0 +1,59 @@
+<div class="update-wrap inner-container">
+  <nz-card nzType="inner" nzTitle="新增/修改">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>租户名称</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入租户名称">
+          <input nz-input formControlName="name"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>关联所有用户</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择是否关联所有用户">
+          <nz-radio-group formControlName="relatedValue" (ngModelChange)="handleRelated($event)">
+            <label nz-radio [nzValue]="'Y'">是</label>
+            <label nz-radio [nzValue]="'N'">否</label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>关联用户</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择关联用户">
+          <nz-select class="multiple-select" nzMode="multiple" formControlName="relatedUserSelectedValue" (ngModelChange)="checkRelated($event)">
+            <nz-option
+              *ngFor="let option of relatedUserOption"
+              [nzLabel]="option"
+              [nzValue]="option"
+              [nzHide]="hideOption('relatedUserSelectedValue', option)"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>关联应用</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择关联应用">
+          <nz-select class="multiple-select" nzMode="multiple" formControlName="relatedAppSelectedValue">
+            <nz-option
+              *ngFor="let option of relatedAppOption"
+              [nzLabel]="option"
+              [nzValue]="option"
+              [nzHide]="hideOption('relatedAppSelectedValue', option)"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3">备注</nz-form-label>
+        <nz-form-control [nzSpan]="8">
+          <textarea nz-input rows="2" formControlName="note"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-control [nzSpan]="12" [nzOffset]="5">
+          <button type="submit" nz-button nzType="primary" class="confirm-btn">确认</button>
+          <button nz-button routerLink="/index/tenant" [queryParamsHandling]="'merge'">返回</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-card>
+</div>

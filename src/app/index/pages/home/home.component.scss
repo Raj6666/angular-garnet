@@ -1,0 +1,44 @@
+
+.welcome-box {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  .welcome-main {
+    display: flex;
+    justify-content: center;
+
+    .image {
+      width: 40%;
+    }
+
+    .welcome-text {
+      padding-top: 8rem;
+
+      h6 {
+        font-family: sans-serif;
+        text-align: left;
+        font-weight: 200;
+        margin: 0;
+        font-size: 4.9rem;
+      }
+
+      h1 {
+        font-family: ‘微软雅黑’;
+        font-weight: 400;
+        transform: scale(1, 1.5);
+        -ms-transform: scale(1, 1.5);
+        -webkit-transform: scale(1, 1.5);
+        -moz-transform: scale(1, 1.5);
+        -o-transform: scale(1, 1.5);
+        text-align: left;
+        font-size: 5rem;
+      }
+
+    }
+
+  }
+
+}

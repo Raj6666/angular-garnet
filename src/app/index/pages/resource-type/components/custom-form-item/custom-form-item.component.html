@@ -1,0 +1,30 @@
+<form nz-form [formGroup]="validateForm">
+  <nz-form-item class="control-width" *ngFor="let control of listOfControl; let i = index">
+    <nz-form-label [nzSpan]="3">{{relatedType}}</nz-form-label>
+    <nz-form-control [nzSpan]="8">
+      <input
+        class="passenger-input"
+        nz-input
+        placeholder="placeholder"
+        [attr.id]="control.id"
+        [attr.type]="control.type"
+        [formControlName]="control.controlInstance"
+      />
+      <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField(control, $event)"></i>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item class="update-form-item">
+    <nz-form-control [nzSpan]="8" [nzOffset]="3">
+      <nz-radio-group name="relatedType" required>
+        <label nz-radio nzValue="字符型">字符型</label>
+        <label nz-radio nzValue="整型">整型</label>
+        <label nz-radio nzValue="布尔型">布尔型</label>
+      </nz-radio-group>
+      <button nz-button nzType="dashed" class="add-button" (click)="addField(relatedType, $event)">
+        <i nz-icon nzType="plus"></i>
+        添加行
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

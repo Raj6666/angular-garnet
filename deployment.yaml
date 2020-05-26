@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-garnet-garnet-fe
+  name: garnet-fe
+  namespace: garnet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-garnet-garnet-fe
+  template:
+    metadata:
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-garnet-garnet-fe
+    spec:
+      containers:
+        - image: 192.168.6.96:8098/garnet-fe:<BUILD_TAG>
+          imagePullPolicy: Always
+          name: garnet-fe
+          ports:
+            - containerPort: 80
+              protocol: TCP

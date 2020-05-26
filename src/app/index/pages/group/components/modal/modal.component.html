@@ -1,0 +1,71 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="详情" (nzOnCancel)="handleCancel()"
+  [nzFooter]="null"
+  nzWrapClassName="vertical-center-modal"
+>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      组名称：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{rowData.name}}
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      关联租户：
+    </div>
+    <div nz-col [nzSpan]="18">
+      <app-box-list [listData]="rowData.relatedTenant"></app-box-list>
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      关联应用：
+    </div>
+    <div nz-col [nzSpan]="18">
+      <app-box-list [listData]="rowData.relatedApp"></app-box-list>
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      关联用户：
+    </div>
+    <div nz-col [nzSpan]="18">
+      <app-box-list [listData]="rowData.relatedUser"></app-box-list>
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      关联角色：
+    </div>
+    <div nz-col [nzSpan]="18">
+      <app-box-list [listData]="rowData.relatedRole"></app-box-list>
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      创建时间：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{rowData.createTime}}
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      修改时间：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{rowData.updateTime}}
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      更改人：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{rowData.modifier}}
+    </div>
+  </div>
+</nz-modal>

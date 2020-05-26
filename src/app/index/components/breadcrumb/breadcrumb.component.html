@@ -1,0 +1,20 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Husiyuan
+ * @Date: 2020-04-24 16:00:09
+ * @LastEditors: Husiyuan
+ * @LastEditTime: 2020-05-12 15:42:00
+ -->
+ <nz-breadcrumb id="breadcrumbContainer" class="wrapper" nzSeparator=">" [nzAutoGenerate]="false">
+  <nz-breadcrumb-item>
+    <a routerLink="/index/home" [queryParamsHandling]="'merge'">
+      <i nz-icon nzType="home" nzTheme="fill"></i> 首页
+    </a>
+  </nz-breadcrumb-item>
+  <nz-breadcrumb-item *ngFor="let item of breadcrumbs">
+    <a [routerLink]="'/index' + item.url" [queryParamsHandling]="'merge'">
+     {{ item.label }}
+    </a>
+  </nz-breadcrumb-item>
+</nz-breadcrumb>

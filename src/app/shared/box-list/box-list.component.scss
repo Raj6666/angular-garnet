@@ -1,0 +1,24 @@
+.list-wrap{
+  max-height: 84px;
+  overflow: auto;
+}
+.list-wrap li{
+  height: 24px;
+  margin-bottom: 6px;
+  line-height: 22px;
+}
+.list-item{
+  position: relative;
+  float: left;
+  max-width: 99%;
+  margin-right: 4px;
+  padding: 0 10px 0 10px;
+  overflow: hidden;
+  color: rgba(0,0,0,.65);
+  border: 1px solid #2469DF;
+  border-radius: 2px;
+  cursor: default;
+}
+.list-wrap{
+  margin-bottom: 0;
+}

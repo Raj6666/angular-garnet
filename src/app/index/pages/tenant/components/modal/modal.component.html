@@ -1,0 +1,74 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: Husiyuan
+ * @Date: 2020-05-22 11:15:21
+ * @LastEditors: Husiyuan
+ * @LastEditTime: 2020-05-22 11:15:21
+--> 
+<nz-modal class="modal-wrap" [(nzVisible)]="isVisible" nzTitle="详情" (nzOnCancel)="handleCancel()" [nzFooter]="null" nzWrapClassName="vertical-center-modal">
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      租户名称：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{data.name}}
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      关联所有用户：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{data.relatedAllUsers === 'Y' ? '是' : '否'}}
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      关联用户：
+    </div>
+    <div nz-col [nzSpan]="18">
+      <app-box-list [listData]="common.combineArrByAttr(data.userList, 'userName')"></app-box-list>
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      关联应用：
+    </div>
+    <div nz-col [nzSpan]="18">
+      <app-box-list [listData]="common.combineArrByAttr(data.applicationList, 'name')"></app-box-list>
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      创建时间：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{common.formatAllTime(data.createdTime)}}
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      修改时间：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{common.formatAllTime(data.modifiedTime)}}
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      更改人：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{data.updatedByUserName}}
+    </div>
+  </div>
+  <div nz-row class="detailItem">
+    <div nz-col [nzSpan]="6">
+      备注：
+    </div>
+    <div nz-col [nzSpan]="18">
+      {{data.description}}
+    </div>
+  </div>
+</nz-modal>

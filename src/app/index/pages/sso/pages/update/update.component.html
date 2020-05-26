@@ -1,0 +1,37 @@
+<div class="update-wrap inner-container">
+  <nz-card nzType="inner" nzTitle="新增/修改" >
+    <form nz-form>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>账号</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入账号">
+          <input nz-input [ngModel]="ssoName" name="ssoName" required placeholder="长度不大于30" maxlength="30" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>关联应用</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择应用">
+          <nz-select class="multiple-select" nzMode="multiple" required [(ngModel)]="relatedAppSelectedValue" name="relatedApp">
+            <nz-option
+              *ngFor="let option of relatedAppOption"
+              [nzLabel]="option"
+              [nzValue]="option"
+              [nzHide]="relatedAppSelectedValue.indexOf(option) != -1"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="3">备注</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入备注">
+          <textarea nz-input rows="2" [ngModel]="note" name="note"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-control [nzSpan]="12" [nzOffset]="5">
+          <button nz-button nzType="primary" class="confirm-btn">确认</button>
+          <button nz-button routerLink="/index/sso" [queryParamsHandling]="'merge'">返回</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-card>
+</div>

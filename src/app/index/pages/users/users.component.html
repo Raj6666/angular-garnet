@@ -1,0 +1,55 @@
+<div class="inner-container">
+  <app-tool></app-tool>
+  <div class="table-wrap">
+    <nz-table
+      #rowSelectionTable
+      nzShowPagination
+      nzShowSizeChanger
+      [nzData]="myTableServie.listOfAllData"
+      (nzCurrentPageDataChange)="myTableServie.currentPageDataChange($event)"
+    >
+      <thead>
+      <tr>
+        <th
+          nzShowCheckbox
+          nzWidth="80px"
+          nzAlign="center"
+          [(nzChecked)]="myTableServie.isAllDisplayDataChecked"
+          [nzIndeterminate]="myTableServie.isIndeterminate"
+          (nzCheckedChange)="myTableServie.checkAll($event)"
+        ></th>
+        <th nzAlign="center">账号</th>
+        <th nzAlign="center">关联租户</th>
+        <th nzAlign="center">关联组</th>
+        <th nzAlign="center">手机号码</th>
+        <th nzAlign="center">邮箱</th>
+        <th nzWidth="150px" nzAlign="center">操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of rowSelectionTable.data">
+        <td
+          nzShowCheckbox
+          nzAlign="center"
+          [(nzChecked)]="myTableServie.mapOfCheckedId[data.id]"
+          [nzDisabled]="data.disabled"
+          (nzCheckedChange)="myTableServie.refreshStatus()"
+        ></td>
+        <td nzAlign="center">{{ data.name }}</td>
+        <td nzAlign="center">{{ data.relatedTenant }}</td>
+        <td nzAlign="center">{{ data.relatedGroup }}</td>
+        <td nzAlign="center">{{ data.phone }}</td>
+        <td nzAlign="center">{{ data.email }}</td>
+        <td nzAlign="center">
+          <div class="operation-button">
+            <i nz-icon nzType="eye" (click)="showModal(data)" title="查看" [nzTheme]="'twotone'"></i>
+            <i nz-icon nzType="edit" [nzTheme]="'twotone'" (click)="updateData(data)" title="修改" routerLink="/index/users/update" [queryParamsHandling]="'merge'"></i>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+<app-modal [isVisible]="isModalVisible" [rowData]="rowData" (closeEvent)="isModalVisible = false"></app-modal>
+

@@ -1,0 +1,97 @@
+<div class="update-wrap inner-container">
+  <nz-card nzType="inner" nzTitle="新增/修改" >
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>角色名称</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请输入角色名称">
+          <input nz-input formControlName="roleName" required placeholder="长度不大于30" maxlength="30"/>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>类型</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择类型">
+          <nz-radio-group formControlName="relatedValue" required>
+            <label nz-radio nzValue="T">租户</label>
+            <label nz-radio nzValue="A">应用</label>
+            <label nz-radio nzValue="T+A">租户+应用</label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item" *ngIf="this.validateForm.controls.relatedValue.value != 'A'">
+        <nz-form-label [nzSpan]="3" nzRequired>关联租户</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择租户">
+          <nz-select formControlName="relatedTenantSelectedValue">
+            <nz-option
+              *ngFor="let option of relatedTenantOption"
+              [nzLabel]="option"
+              [nzValue]="option"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item" *ngIf="this.validateForm.controls.relatedValue.value != 'T'">
+        <nz-form-label [nzSpan]="3" nzRequired>关联应用</nz-form-label>
+        <nz-form-control [nzSpan]="8" nzErrorTip="请选择应用">
+          <nz-select formControlName="relatedAppSelectedValue" required>
+            <nz-option
+              *ngFor="let option of relatedAppOption"
+              [nzLabel]="option"
+              [nzValue]="option"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3">关联组</nz-form-label>
+        <nz-form-control [nzSpan]="8">
+          <nz-select class="multiple-select" nzMode="multiple" formControlName="relatedGroupSelectedValue">
+            <nz-option
+              *ngFor="let option of relatedGroupOption"
+              [nzLabel]="option"
+              [nzValue]="option"
+              [nzHide]="hideOption('relatedGroupSelectedValue', option)"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="3">备注</nz-form-label>
+        <nz-form-control [nzSpan]="8">
+          <textarea nz-input rows="2" formControlName="note"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-label [nzSpan]="3" nzRequired>关联权限</nz-form-label>
+        <nz-form-control [nzSpan]="20">
+          <nz-tree
+            nzCheckable
+            #myTree
+            [nzData]="nodes"
+            [(nzCheckedKeys)]="selectedNodes"
+            (nzDblClick)="openFolder($event)"
+            (nzCheckBoxChange)="nzEvent($event)"
+            [nzTreeTemplate]="nzTreeTemplate"
+          ></nz-tree>
+          <ng-template #nzTreeTemplate let-node>
+            <span class="custom-node" [class.active]="activedNode?.key === node.key">
+              <span *ngIf="!node.isLeaf" (contextmenu)="contextMenu($event, menu)">
+                <span class="folder-name">{{ node.title }}</span>
+                <span class="folder-desc" *ngFor="let item of node.origin.actionType">{{ item }}</span>
+              </span>
+              <span *ngIf="node.isLeaf" (contextmenu)="contextMenu($event, menu)">
+                <span class="file-name">{{ node.title }}</span>
+                <span class="folder-desc" *ngFor="let item of node.origin.actionType">{{ item }}</span>
+              </span>
+            </span>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="update-form-item">
+        <nz-form-control [nzSpan]="12" [nzOffset]="5">
+          <button nz-button nzType="primary" class="confirm-btn">确认</button>
+          <button nz-button routerLink="/index/role" [queryParamsHandling]="'merge'">返回</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-card>
+</div>

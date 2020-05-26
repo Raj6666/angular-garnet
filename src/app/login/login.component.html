@@ -1,0 +1,55 @@
+<!--
+    登录页
+-->
+
+
+<div class="wrapper">
+  <div class="login-box">
+    <div><img class="login-bg" src="../../assets/images/bg_login.png"/></div>
+    <div class="login-form">
+      <h1 class="sys-title">Garnet安全模块</h1>
+      <form class="login-main">
+        <nz-form-item>
+          <nz-form-control nzErrorTip="请输入用户名">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="userName" placeholder="请输入用户名"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="请输入密码">
+            <nz-input-group nzPrefixIcon="lock">
+              <input type="password" nz-input formControlName="password" placeholder="请输入密码"/>
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control nzErrorTip="请输入验证码" class="login-code">
+            <nz-input-group nzPrefixIcon="number">
+              <input type="text" nz-input formControlName="code" placeholder="请输入验证码"/>
+            </nz-input-group>
+            <img src="../../assets/images/img_code.jpg" alt="如果看不清楚，请单击图片刷新！" id="refreshCode"/>
+
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button class="login-form-button" [nzType]="'primary'">登&nbsp; &nbsp; 录</button>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control>
+            <label nz-checkbox formControlName="remember">
+              <span>记住我</span>
+            </label>
+            <a class="login-form-forgot" class="login-form-forgot">忘记密码</a>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</div>

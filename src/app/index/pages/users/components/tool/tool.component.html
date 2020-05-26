@@ -1,0 +1,20 @@
+<div nz-row nzType="flex" nzJustify="start">
+  <div nz-col nzSpan="5">
+    <div class="input-search">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text" nz-input [ngModel]="userName" name="userName" placeholder="用户账号" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <i nz-icon nzType="search"></i>
+      </ng-template>
+    </div>
+  </div>
+  <div nz-col nzSpan="5">
+    <div class="header-operation-button">
+      <button nz-button nzType="primary" nzSize="default" title="新增" routerLink="/index/users/update" [queryParamsHandling]="'merge'"><i nz-icon nzType="plus"></i></button>
+    </div>
+    <div class="header-operation-button">
+      <button nz-button nzType="danger" nzSize="default" title="删除" ><i nz-icon nzType="delete"></i></button>
+    </div>
+  </div>
+</div>

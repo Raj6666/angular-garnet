@@ -1,0 +1,36 @@
+.resource-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: #efefef;
+}
+
+nz-select {
+  width: 90%;
+}
+
+.resource-content {
+  background: #fff;
+  padding: 20px;
+  width: 83.33%;
+}
+
+.resource-tree {
+  background: #fff;
+  padding: 15px 0 15px 10px;
+  margin-right: 10px;
+  width: 16.67%;
+  overflow-x: auto;
+  border-right: 10px solid #fff;
+}
+
+.tree-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+::ng-deep .resource-tree .ant-tree-child-tree{
+  overflow: inherit
+}
